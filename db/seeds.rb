@@ -15,6 +15,11 @@ require 'faker'
     )
 end
 
+Post.create!(
+    title: "Faker unique post title",
+    body: "This is the text for the unique faker post."
+  )
+
 posts = Post.all
 
 100.times do
@@ -24,6 +29,12 @@ posts = Post.all
       body: Faker::Lorem.paragraph
     )
 end
+
+  Comment.create!(
+    post: posts.sample,
+    body: "This is the unique faker comment."
+    )
+
 
 puts "Seeds finished"
 puts "#{Post.count} posts were created."
