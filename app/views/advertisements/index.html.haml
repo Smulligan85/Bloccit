@@ -1,0 +1,6 @@
+%h1 All Advertisments
+- @advertisements.each do |advertisement|
+  .media
+    .media-body
+      %h4.media-heading
+        %p= link_to advertisement.title, advertisement
