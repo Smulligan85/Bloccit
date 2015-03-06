@@ -32,5 +32,6 @@ group :development, :test do
 end
 
 gem 'pry-rails', group: :development
+gem 'figaro', '~> 1.1.0'
 
 
