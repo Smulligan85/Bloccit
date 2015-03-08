@@ -33,5 +33,5 @@ end
 
 gem 'pry-rails', group: :development
 gem 'figaro', '~> 1.1.0'
-
+gem 'pundit', '~> 0.3.0'
 
