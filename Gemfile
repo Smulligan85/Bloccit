@@ -35,3 +35,6 @@ gem 'pry-rails', group: :development
 gem 'figaro', '~> 1.1.0'
 gem 'pundit', '~> 0.3.0'
 gem 'redcarpet', '~> 3.2.2'
+gem 'carrierwave'
+gem 'mini_magick'
+gem 'fog', '~> 1.28.0'
