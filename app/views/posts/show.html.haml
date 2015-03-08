@@ -1,4 +1,4 @@
-%h1= markdown_to_html @post.title
-%p= markdown_to_html @post.body
+%h1= @post.markdown_title
+%p= @post.markdown_body
 - if policy(@post).edit?
   = link_to "Edit", edit_topic_post_path(@topic, @post), class: "btn btn-success"
