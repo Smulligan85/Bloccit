@@ -10,7 +10,7 @@
       .media
         .media-body
           %h4.media-heading
-            = link_to post.title, [@topic, post]
+            = link_to (markdown_to_html post.title), [@topic, post]
           %small
             submitted #{time_ago_in_words(post.created_at)} ago by #{post.user.name}
             #{post.comments.count} Comments
