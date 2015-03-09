@@ -2,7 +2,12 @@
 .row
   .col-md-8
     %small
+<<<<<<< HEAD
       submitted #{time_ago_in_words(@post.created_at)} ago by #{@post.user.name} 
+=======
+      = image_tag(@post.image.url) if @post.image.present?
+      submitted #{time_ago_in_words(@post.created_at)} ago by #{@post.user.name}
+>>>>>>> image-assignment
     %p= markdown_to_html @post.body
   .col-md-4
     - if policy(@post).edit?
