@@ -14,7 +14,7 @@
 
       .form-group
         - if devise_mapping.rememberable?
-          = f.label :remember_me, class: 'checkbox'
+          = f.label :remember_me
           = f.check_box :remember_me
 
       = f.submit "Sign In", class: 'btn btn-success'

@@ -18,7 +18,6 @@
         = f.text_area :description, rows: 8, class: 'form-control', placeholder: "Enter topic description"
 
       .form-group
-        = f.label :public, class: 'checkbox'
+        = f.label :public
         = f.check_box :public
-
       = f.submit "Save", class: 'btn btn-success'
