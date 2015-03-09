@@ -13,5 +13,14 @@
     = f.label :body
     = f.text_area :body, rows: 8, class: 'form-control', placeholder: "Enter post body"
 
+  - if post.image.present?
+    .form-group
+      %p Current Image
+      = image_tag( post.image.url )
+  .form-group
+    = f.label :image
+    = f.file_field :image
+    = f.hidden_field :image_cache
+
   = f.submit "Save", class: 'btn btn-success'
 
