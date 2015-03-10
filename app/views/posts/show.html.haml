@@ -2,13 +2,27 @@
 .row
   .col-md-8
     %small
-<<<<<<< HEAD
       submitted #{time_ago_in_words(@post.created_at)} ago by #{@post.user.name} 
-=======
       = image_tag(@post.image.url) if @post.image.present?
-      submitted #{time_ago_in_words(@post.created_at)} ago by #{@post.user.name}
->>>>>>> image-assignment
     %p= markdown_to_html @post.body
+    / This is the only way I've been able to show the comment, but I think it only shows one comment even when a post has two, correct?
+    %small= markdown_to_html @comment.body
+    %p submitted #{time_ago_in_words(@comment.created_at)} ago by #{@comment.user.name} 
+    %small
+      / - @post.comments.each do |comment| / is this how I should render the _comments partial
+      / = render partial: 'comments/comment', locals: { comment: @comment }
   .col-md-4
     - if policy(@post).edit?
-      = link_to "Edit", edit_topic_post_path(@topic, @post), class: "btn btn-success"
+      = link_to "Edit", edit_topic_post_path(@topic, @post), class: 'btn btn-success'
+%h1 Create New Comment
+
+.row
+  .col-md-4
+    %p Guidelines for comments
+    %ul
+      %li Be nice to other users.
+      %li Don't be a sailor.
+      %li Use emojicons.
+  .col-md-8
+    = render partial: 'comments/form', locals: { topic: @topic, post: @post }
+    / This is rendering the comments _form since it just has a body area, but the information is being saved as an edit to the post body

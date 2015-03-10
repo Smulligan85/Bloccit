@@ -11,7 +11,16 @@ gem 'rails', '4.2.0'
  
  group :development do
    gem 'sqlite3'
+   gem 'better_errors'
+   gem 'binding_of_caller'
+   gem 'pry-rails'
  end
+
+ group :development, :test do
+  gem 'byebug'
+  gem 'web-console', '~> 2.0'
+  gem 'spring'
+end
 
 gem 'sass-rails', '~> 5.0'
 gem 'bootstrap-sass', '~> 3.3.3'
@@ -24,14 +33,6 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'haml', '~> 4.0.6'
-
-group :development, :test do
-  gem 'byebug'
-  gem 'web-console', '~> 2.0'
-  gem 'spring'
-end
-
-gem 'pry-rails', group: :development
 gem 'figaro', '~> 1.1.0'
 gem 'pundit', '~> 0.3.0'
 gem 'redcarpet', '~> 3.2.2'
