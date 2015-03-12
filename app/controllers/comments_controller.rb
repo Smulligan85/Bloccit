@@ -1,12 +1,39 @@
 class CommentsController < ApplicationController
   def create
-    @comment = current_user.comments.build
+    @post = Post.find(params[:post_id])
+    @comment = current_user.comments.new(comment_params)
     @comment.post = @post
+
+    authorize @comment
+    
+    if @comment.save
+      flash[:notice] = "Comment was saved."
+      redirect_to [@topic, @post]
+    else
+      flash[:error] = "There was an error saving the comment. Please try again."
+      render [@topic, @post]
+    end
   end
 
-  # private # I thought I needed to permit :body, but this kept throwing an error
+  def destroy
+    @topic = Topic.find(params[:topic_id])
+    @post = @topic.posts.find(params[:post_id])
+    @comment = @post.comments.find(params[:id])
 
-  # def comment_params
-  #   params.require(:comment).permit(:body)
-  # end
+    authorize @comment
+
+    if @comment.destroy
+      flash[:notice] = "Comment was deleted."
+      redirect_to [@topic, @post]
+    else
+      flash[:error] = "There was an error deleting the comment. Please try again."
+      render [@topic, @post]
+    end
+  end
+
+  private
+
+  def comment_params
+    params.require(:comment).permit(:body)
+  end
 end

@@ -9,20 +9,18 @@
     %small= markdown_to_html @comment.body
     %p submitted #{time_ago_in_words(@comment.created_at)} ago by #{@comment.user.name} 
     %small
-      / - @post.comments.each do |comment| / is this how I should render the _comments partial
       / = render partial: 'comments/comment', locals: { comment: @comment }
   .col-md-4
     - if policy(@post).edit?
       = link_to "Edit", edit_topic_post_path(@topic, @post), class: 'btn btn-success'
-%h1 Create New Comment
+      
+    - if policy(@post).destroy?
+      = link_to "Delete Post", [@topic, @post], method: :delete, class: 'btn btn-danger', data: { confirm: "Are you sure you want to delete post?" }
+
+%h3 Comments
 
 .row
   .col-md-4
-    %p Guidelines for comments
-    %ul
-      %li Be nice to other users.
-      %li Don't be a sailor.
-      %li Use emojicons.
-  .col-md-8
-    = render partial: 'comments/form', locals: { topic: @topic, post: @post }
+    %p Add a comment
+    = render partial: 'comments/form', locals: { post: @post, comment: @comment }
     / This is rendering the comments _form since it just has a body area, but the information is being saved as an edit to the post body
