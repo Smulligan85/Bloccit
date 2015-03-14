@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
     @topic = Topic.find(params[:topic_id])
-    @comment = Comment.find(params[:topic_id])
+    @comment = Comment.new
   end
 
   def new
@@ -16,6 +16,7 @@ class PostsController < ApplicationController
     @topic = Topic.find(params[:topic_id])
     @post = current_user.posts.build(post_params)
     @post.topic = @topic
+    
     authorize @post
     if @post.save
       flash[:notice] = "Post was saved."
