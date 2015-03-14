@@ -6,10 +6,8 @@
       = image_tag(@post.image.url) if @post.image.present?
     %p= markdown_to_html @post.body
     / This is the only way I've been able to show the comment, but I think it only shows one comment even when a post has two, correct?
-    %small= markdown_to_html @comment.body
-    %p submitted #{time_ago_in_words(@comment.created_at)} ago by #{@comment.user.name} 
     %small
-      = render partial: 'comments/comment', locals: collection: @post.comments
+      = render partial: 'comments/comment', collection: @post.comments
   .col-md-4
     - if policy(@post).edit?
       = link_to "Edit", edit_topic_post_path(@topic, @post), class: 'btn btn-success'
