@@ -8,6 +8,7 @@
     %p.lead= @topic.description
     - @posts.each do |post|
       .media
+        =render partial: 'votes/voter', locals: { post: post }
         .media-body
           %h4.media-heading
             = link_to (markdown_to_html post.title), [@topic, post]

@@ -1,6 +1,7 @@
-%h1= markdown_to_html @post.title
 .row
   .col-md-8
+    = render partial: 'votes/voter', locals: { post: @post }
+    %h1= markdown_to_html @post.title
     %small
       submitted #{time_ago_in_words(@post.created_at)} ago by #{@post.user.name} 
       = image_tag(@post.image.url) if @post.image.present?
@@ -13,6 +14,12 @@
       
     - if policy(@post).destroy?
       = link_to "Delete Post", [@topic, @post], method: :delete, class: 'btn btn-danger', data: { confirm: "Are you sure you want to delete post?" }
+
+    %div
+      %h3= pluralize(@post.points, 'point')
+      %small
+        = pluralize(@post.up_votes, 'up vote')
+        = pluralize(@post.down_votes, 'down vote')
 
 %h3 Comments
 
