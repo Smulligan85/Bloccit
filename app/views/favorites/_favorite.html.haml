@@ -1,0 +1,10 @@
+- if policy(Favorite.new).create?
+  .favorite
+    - if favorite = current_user.favorited(post)
+      = link_to [post, favorite], class: 'btn btn-danger', method: :delete do
+        %i.glyphicon.glypicon-star
+        &nbsp; Unfavorite
+    - else
+      = link_to [post, Favorite.new], class: 'btn btn-primary', method: :post do
+        %i.glyphicon.glypicon-star
+        &nbsp; Favorite
