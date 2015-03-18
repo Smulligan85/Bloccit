@@ -1,4 +1,4 @@
-class FavoriteMailer < ApplicationMailer
+class FavoriteMailer < ActionMailer::Base
 
   default from: 'sean.mulligan85@gmail.com'
 
@@ -6,8 +6,8 @@ class FavoriteMailer < ApplicationMailer
 
     # New Headers
     headers["Message-ID"] = "comments/#{comment.id}@your-app-name.example"
-    headers["In-Reply_Do"] = "posts/#{post.id}@your-app-name.example"
-    headers["References"] = "posts/#{post.id}@your-app-name.example"
+    headers["In-Reply_Do"] = "post/#{post.id}@your-app-name.example"
+    headers["References"] = "post/#{post.id}@your-app-name.example"
 
     @user = user
     @post = post
