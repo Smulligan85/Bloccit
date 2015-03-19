@@ -1,0 +1,8 @@
+.media
+  =render partial: 'votes/voter', locals: { post: post }
+  .media-body
+    %h4.media-heading
+      = link_to (markdown_to_html post.title), [post.topic, post]
+    %small
+      submitted #{time_ago_in_words(post.created_at)} ago by #{post.user.name}
+      #{post.comments.count} Comments

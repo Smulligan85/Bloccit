@@ -6,15 +6,8 @@
 .row
   .col-md-8
     %p.lead= @topic.description
-    - @posts.each do |post|
-      .media
-        =render partial: 'votes/voter', locals: { post: post }
-        .media-body
-          %h4.media-heading
-            = link_to (markdown_to_html post.title), [@topic, post]
-          %small
-            submitted #{time_ago_in_words(post.created_at)} ago by #{post.user.name}
-            #{post.comments.count} Comments
+    = render @posts
+      
   .col-md-4
     - if policy(Post.new).create?
       = link_to "New Post", new_topic_post_path(@topic), class: 'btn btn-success'

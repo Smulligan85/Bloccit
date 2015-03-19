@@ -22,7 +22,7 @@ describe Comment do
         allow( FavoriteMailer )
           .to receive(:new_comment)
           .with(@user, @post, @comment)
-          .and_return( double(deliver: true) )
+          .and_return( double(deliver_now: true) )
 
         @comment.save
       end

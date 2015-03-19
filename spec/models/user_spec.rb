@@ -13,7 +13,7 @@ describe User do
     end
 
     it "returns 'nil' if the user has not favorited the post" do
-      expect(favorited(post)).to eq(nil)
+      expect(favorited(@post)).to eq(nil)
     end
 
     it "returns the appropriate favorited if it exists" do
