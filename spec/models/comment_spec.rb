@@ -9,7 +9,7 @@ describe Comment do
     before do
       @post = associated_post
       @user = authenticated_user
-      @comment = Comment.new(body: 'My body', post: @post, user_id: 10000)
+      @comment = Comment.new(body: 'My comment', post: @post, user_id: 10000)
     end
 
      # We don't need to change anything for this condition;
@@ -22,7 +22,7 @@ describe Comment do
         allow( FavoriteMailer )
           .to receive(:new_comment)
           .with(@user, @post, @comment)
-          .and_return( double(deliver_now: true) )
+          .and_return( double(deliver: true) )
 
         @comment.save
       end
