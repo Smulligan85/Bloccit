@@ -17,7 +17,6 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    # @topic = Topic.find(params[:topic_id])
     @post = Post.find(params[:post_id])
     @topic = @post.topic
     @comment = @post.comments.find(params[:id])
@@ -26,11 +25,15 @@ class CommentsController < ApplicationController
 
     if @comment.destroy
       flash[:notice] = "Comment was deleted."
-      redirect_to [@topic, @post]
     else
       flash[:error] = "There was an error deleting the comment. Please try again."
-      redirect_to [@topic, @post]
     end
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
+
   end
 
   private
