@@ -6,7 +6,7 @@
       submitted #{time_ago_in_words(@post.created_at)} ago by #{@post.user.name} 
       = image_tag(@post.image.url) if @post.image.present?
     %p= markdown_to_html @post.body
-    %small
+    %small.js-comments
       = render partial: 'comments/comment', collection: @post.comments
   .col-md-4
     - if policy(@post).edit?
@@ -28,4 +28,5 @@
 .row
   .col-md-4
     %p Add a comment
-    = render partial: 'comments/form', locals: { post: @post, comment: @comment }
+    .new-comment
+      = render partial: 'comments/form', locals: { post: @post, comment: @comment }
