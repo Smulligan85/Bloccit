@@ -8,7 +8,12 @@
           = @user.name
         %small
           = pluralize(@user.posts_count, 'post')
+<<<<<<< HEAD
           .js-comments-count= pluralize(@user.comments.count, 'comment')
+=======
+          .js-comments-count
+            = pluralize(@user.comments_count, 'comment')
+>>>>>>> comment-counter
 
 .row
   .tabbable.tabs-left
