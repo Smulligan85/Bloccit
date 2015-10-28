@@ -92,6 +92,7 @@ ActiveRecord::Schema.define(version: 20150324024012) do
     t.datetime "updated_at", null: false
   end
 
+  add_index "votes", ["post_id"], name: "index_votes_on_post_id"
   add_index "votes", ["user_id"], name: "index_votes_on_user_id"
 
 end
