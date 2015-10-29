@@ -3,9 +3,9 @@ require 'rails_helper'
 describe Vote do
 
   before do
-    @user1 = create(:user)
-    @post = create(:post, user: @user1)
-    create(:comment, user: @user1, post: post)
+    @user = create(:user)
+    @post = create(:post, user: @user)
+    create(:comment, user: @user, post: @post)
   end
   
   describe "validations" do
